@@ -1,6 +1,8 @@
 <?php
 /*
  * This file is a part of Mibew External API Plugin.
+ *  
+ *  Amended by Sean Newell for Dorian Business Systems
  *
  * Copyright 2015 Dmitriy Simushev <simushevds@gmail.com>.
  *
@@ -30,24 +32,13 @@ namespace Mibew\Mibew\Plugin\ExternalApi;
  */
 class Plugin extends \Mibew\Plugin\AbstractPlugin implements \Mibew\Plugin\PluginInterface
 {
-    /**
-     * The plugin does not need extra initialization thus it is always ready to
-     * work.
-     *
-     * @return boolean
-     */
-    public function initialized()
-    {
-        return true;
-    }
+
+    protected $initialized = true;
 
     /**
      * The main entry point of a plugin.
      */
-    public function run()
-    {
-        // There are no actions that should be done.
-    }
+    public function run(){}
 
     /**
      * Specify version of the plugin.
@@ -56,6 +47,6 @@ class Plugin extends \Mibew\Plugin\AbstractPlugin implements \Mibew\Plugin\Plugi
      */
     public static function getVersion()
     {
-        return '0.0.1';
+        return '0.0.2';
     }
 }

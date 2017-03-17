@@ -1,6 +1,8 @@
 <?php
 /*
  * This file is a part of Mibew External API Plugin.
+ * 
+ *  Amended by Sean Newell for Dorian Business Systems
  *
  * Copyright 2015 Dmitriy Simushev <simushevds@gmail.com>.
  *
@@ -28,33 +30,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 class OperatorController extends AbstractController
 {
-    public function pingAction(Request $request)
+    public function anyOperatorsOnline(Request $request)
     {
-        // Get the ID of the operator.
-        $id = $request->attributes->getInt('operator_id');
-
-        // Update of operator's last ping time.
-        $time = time();
-
-        return new JsonResponse(array(
-            'id' => $id,
-            'lastPingTime' => $time,
-        ));
-    }
-
-    public function updateStatusAction(Request $request)
-    {
-        // Get ID of the operator whose state should be changed.
-        $id = $request->attributes->getInt('operator_id');
-
-        // Get the operator's status from the request and save it into the
-        // database.
-        $is_online = true;
-
-        // ...and return the new state
-        return new JsonResponse(array(
-            'id' => $id,
-            'isOnline' => $is_online,
-        ));
+        return new JsonResponse((object) ['anyOperatorsOnline' => has_online_operators()]);
     }
 }
